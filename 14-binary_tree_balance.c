@@ -1,22 +1,22 @@
 #include "binary_trees.h"
 
 /**
- * _binary_tree_height - measures the hight of the binary tree
+ * _bi_hi - measures the hight of the binary tree
  * @tree: the root pointer
  * Return: the hight
  */
-int _binary_tree_height(const binary_tree_t *tree)
+int _bi_hi(const binary_tree_t *tree)
 {
 	int l_hight, r_hight;
 
 	if (tree == NULL)
 		return (0);
 	if (tree->left)
-		l_hight = 1 + _binary_tree_height(tree->left);
+		l_hight = 1 + _bi_hi(tree->left);
 	else
 		l_hight = 0;
 	if (tree->right)
-		r_hight = 1 + _binary_tree_height(tree->right);
+		r_hight = 1 + _bi_hi(tree->right);
 	else
 		r_hight = 0;
 	if (l_hight > r_hight)
@@ -47,7 +47,6 @@ int binary_tree_balance(const binary_tree_t *tree)
 			h_l = 1;
 	}
 
-	factor = h_l - h_r +  _binary_tree_height(tree->left) -  _binary_tree_height(tree->right);
-	
+	factor = h_l - h_r +  _bi_hi(tree->left) -  _bi_hi(tree->right);
 	return (factor);
 }
