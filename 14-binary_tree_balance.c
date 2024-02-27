@@ -5,9 +5,9 @@
  * @tree: the root pointer
  * Return: the hight
  */
-size_t _binary_tree_height(const binary_tree_t *tree)
+int _binary_tree_height(const binary_tree_t *tree)
 {
-	size_t l_hight, r_hight;
+	int l_hight, r_hight;
 
 	if (tree == NULL)
 		return (0);
@@ -38,5 +38,8 @@ int binary_tree_balance(const binary_tree_t *tree)
 		return (0);
 
 	factor =  _binary_tree_height(tree->left) -  _binary_tree_height(tree->right);
+	
+	printf("\nleft = %d\n", _binary_tree_height(tree->left));
+	printf("right = %d\n", _binary_tree_height(tree->right));
 	return (factor);
 }
