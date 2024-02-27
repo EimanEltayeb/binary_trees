@@ -32,21 +32,19 @@ int _bi_hi(const binary_tree_t *tree)
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int factor, h_l = 0, h_r = 0;
+	int factor, l = 0, r = 0;
 
 	if (!tree)
 		return (0);
-	if (tree->right)
-	{
-		if (!tree->right->right && !tree->right->left)
-			h_r = 1;
-	}
-	if (tree->left)
-	{
-		if (!tree->left->right && !tree->left->left)
-			h_l = 1;
-	}
+	if (!tree->left)
+		l = 0;
+	else
+		l = _bi_hi(tree->left) + 1;
+	if (!tree->right)
+		r = 0;
+	else
+		r = _bi_hi(tree->right) + 1;
 
-	factor = h_l - h_r +  _bi_hi(tree->left) -  _bi_hi(tree->right);
+	factor =  l - r;
 	return (factor);
 }
